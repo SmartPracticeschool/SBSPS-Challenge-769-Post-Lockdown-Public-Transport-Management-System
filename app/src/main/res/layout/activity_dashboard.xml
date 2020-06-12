@@ -25,12 +25,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/my_tickets"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/my_tickets_card"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#F6E75E">
@@ -59,12 +61,14 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/book_tickets"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/book_tickets_card"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#FFF6E75E">
@@ -109,12 +113,14 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/search"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/search_card"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#FFF6E75E">
@@ -143,12 +149,14 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/tracking"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/tracking_card"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#FFF6E75E">
@@ -189,12 +197,14 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/health"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/health_card"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#FFF6E75E">

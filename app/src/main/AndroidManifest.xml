@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".user_activity"></activity>
-        <activity android:name=".healthplus"></activity>
-        <activity android:name=".Dashboard"></activity>
-        <activity android:name=".login"></activity>
+        <activity android:name=".search_option"></activity>
+        <activity android:name=".user_activity" />
+        <activity android:name=".healthplus" />
+        <activity android:name=".Dashboard" />
+        <activity android:name=".login" />
         <activity android:name=".splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -9,12 +9,13 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView user_img;
+    private ImageView user_img,admin_img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         user_img = (ImageView) findViewById(R.id.imageView);
+        admin_img = (ImageView) findViewById(R.id.imageView2);
         user_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -22,6 +23,20 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Intent i = new Intent(MainActivity.this, user_activity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }, 1000);
+            }
+        });
+
+        admin_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(MainActivity.this, Dashboard.class);
                         startActivity(i);
                         finish();
                     }
