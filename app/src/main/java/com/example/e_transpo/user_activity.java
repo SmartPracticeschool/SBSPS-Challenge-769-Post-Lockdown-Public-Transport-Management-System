@@ -1,46 +1,45 @@
 package com.example.e_transpo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
-    private ImageView user_img,admin_img;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class user_activity extends AppCompatActivity {
+    private Button login_btn,signin_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        user_img = (ImageView) findViewById(R.id.imageView);
-        admin_img = (ImageView) findViewById(R.id.imageView2);
-        user_img.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_user_activity);
+        login_btn = (Button) findViewById(R.id.button);
+        signin_btn = (Button) findViewById(R.id.button2);
+        login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent i = new Intent(MainActivity.this, user_activity.class);
+                        Intent i = new Intent(user_activity.this, login.class);
                         startActivity(i);
                         finish();
                     }
-                }, 1000);
+                }, 500);
             }
         });
-
-        admin_img.setOnClickListener(new View.OnClickListener() {
+        signin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent i = new Intent(MainActivity.this, Dashboard.class);
+                        Intent i = new Intent(user_activity.this, healthplus.class);
                         startActivity(i);
-                        finish();
+
                     }
-                }, 1000);
+                }, 500);
             }
         });
 
