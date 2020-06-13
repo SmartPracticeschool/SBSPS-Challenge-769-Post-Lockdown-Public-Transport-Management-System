@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "743864572155",
+    "firebase_url": "https://e-transpo.firebaseio.com",
+    "project_id": "e-transpo",
+    "storage_bucket": "e-transpo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743864572155:android:c7f088e6325b6e184b385e",
+        "android_client_info": {
+          "package_name": "com.example.e_transpo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743864572155-d5n3132viujdbso94kccad2sid5a18q8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.e_transpo",
+            "certificate_hash": "9f0c3b05fa2e1d617ca83e5022f41d2dcaa7e5e6"
+          }
+        },
+        {
+          "client_id": "743864572155-d4j324opl5e125t3hce5a4kmsbgmme1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFrm9j0UsRH9eujhIUeos1hKC1sMoBY8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743864572155-d4j324opl5e125t3hce5a4kmsbgmme1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,4 +3,5 @@
     <string name="book_your_tickets_here">Book Your Tickets Here-</string>
     <string name="to">To</string>
     <string name="from">From</string>
+    <string name="if_registered_then_login">If registered then Login !</string>
 </resources>
