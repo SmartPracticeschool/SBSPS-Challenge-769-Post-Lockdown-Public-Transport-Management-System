@@ -19,15 +19,26 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class user_activity extends AppCompatActivity implements View.OnClickListener {
     private Button signup_btn;
     private TextView login_btn;
-    private EditText email ,password;
+    private EditText email ,password,name;
     private ProgressBar loading;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore fbase;
+    private String userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,17 +46,20 @@ public class user_activity extends AppCompatActivity implements View.OnClickList
         login_btn = (Button) findViewById(R.id.login_btn);
         signup_btn = (Button) findViewById(R.id.reg_sinup_btn);
         email = (EditText)findViewById(R.id.editTextTextEmail_reg);
+        name = (EditText)findViewById(R.id.reg_name);
         password = (EditText)findViewById(R.id.editTextPassword_reg);
         loading = (ProgressBar)findViewById(R.id.loader);
         login_btn.setOnClickListener(this);
         signup_btn.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
+        fbase = FirebaseFirestore.getInstance();
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.reg_btn:
+            case R.id.login_btn:
+                finish();
                 Intent i = new Intent(user_activity.this, login.class);
                 startActivity(i);
                 break;
@@ -58,6 +72,7 @@ public class user_activity extends AppCompatActivity implements View.OnClickList
     private void registerUser() {
         String email_input = email.getText().toString().trim();
         String password_input = password.getText().toString().trim();
+        final String name_input = name.getText().toString();
         if (email_input.isEmpty()){
             email.setError("Email iS Requirred");
             email.requestFocus();
@@ -65,6 +80,11 @@ public class user_activity extends AppCompatActivity implements View.OnClickList
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email_input).matches()){
             email.setError("Please set a valid Email");
+            email.requestFocus();
+            return;
+        }
+        if (name_input.isEmpty()){
+            email.setError("Name is Requirred");
             email.requestFocus();
             return;
         }
@@ -85,8 +105,20 @@ public class user_activity extends AppCompatActivity implements View.OnClickList
            @Override
            public void onComplete(@NonNull Task<AuthResult> task) {
                if(task.isSuccessful()){
+                   FirebaseUser user = mAuth.getCurrentUser();
                    loading.setVisibility(View.GONE);
                    Toast.makeText(getApplicationContext(),"User Registed Succesfully!",Toast.LENGTH_SHORT).show();
+                   userid = mAuth.getCurrentUser().getUid();
+                   DocumentReference documentReference = fbase.collection("users").document();
+                   Map<String,Object> usermap = new HashMap<>();
+                   usermap.put("firstname",name_input);
+                   documentReference.set(usermap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                       @Override
+                       public void onComplete(@NonNull Task<Void> task) {
+                           Toast.makeText(getApplicationContext(),"User Registed Succesfully in datasbase!!",Toast.LENGTH_SHORT).show();
+                       }
+                   });
+                   finish();
                    Intent i = new Intent(user_activity.this, Dashboard.class);
                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                    startActivity(i);
@@ -94,11 +126,11 @@ public class user_activity extends AppCompatActivity implements View.OnClickList
                else{
                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
                        Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-
                    }
                }
 
            }
+
        });
 
 

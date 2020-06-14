@@ -46,9 +46,10 @@ public class login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.reg_btn:
-            Intent i = new Intent(login.this, user_activity.class);
-            startActivity(i);
-            break;
+                finish();
+                Intent i = new Intent(login.this, user_activity.class);
+                startActivity(i);
+                break;
             case R.id.already_reg_login_btn:
                 userlogin();
                 break;
@@ -87,6 +88,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     loading.setVisibility(View.GONE);
+                    finish();
                     Intent i = new Intent(login.this, Dashboard.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
@@ -97,4 +99,14 @@ public class login extends AppCompatActivity implements View.OnClickListener {
             }
         });
         }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mAuth.getCurrentUser()!=null){
+            finish();
+            Intent i = new Intent(this,Dashboard.class);
+            startActivity(i);
+        }
+    }
 }
