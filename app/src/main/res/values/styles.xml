@@ -24,6 +24,13 @@
         <item>Railways</item>
         <item>Roadways</item>
     </string-array>
+    <string-array name="trainid">
+        <item>Select your train id</item>
+        <item>22439-Vande Bharat Express</item>
+        <item>12049-Gatimaan Express</item>
+        <item>12002-New Delhi Bhopal Shatabdi Express </item>
+        <item>12951-Mumbai New Delhi Rajdhani Express</item>
+    </string-array>
 
     <string-array name="spinner_hospital">
         <item>Choose Hospital</item>

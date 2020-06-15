@@ -29,31 +29,28 @@
         android:textSize="33sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.717"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124" />
+        app:layout_constraintVertical_bias="0.069" />
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/spinner_search"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:entries="@array/spinner_items"
-        android:padding="10dp"
-        android:spinnerMode="dropdown"
-
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/mode_of_transpo"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:background="@drawable/round_border"
+        app:hintText="Enter Mode Of Transport"
         app:layout_constraintBottom_toTopOf="@+id/editText_from"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.297"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/book_ticket_heading"
-        app:layout_constraintVertical_bias="0.173"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editText_to"
-        android:layout_width="346dp"
-        android:layout_height="56dp"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/round_border"
         android:ems="10"
@@ -61,7 +58,7 @@
         android:inputType="text"
         android:padding="16dp"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,48 +66,47 @@
 
     <EditText
         android:id="@+id/editText_from"
-        android:layout_width="346dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="76dp"
         android:background="@drawable/round_border"
         android:ems="10"
         android:hint="@string/from"
         android:inputType="text"
         android:padding="16dp"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/book_ticket_heading" />
 
     <Button
         android:id="@+id/booktickrt_btn"
-        android:layout_width="230dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/round_bt"
         android:fontFamily="@font/roboto_condensed_bold"
         android:text="Book Ticket"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_pick"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/train_no"
-        android:layout_width="346dp"
-        android:layout_height="56dp"
+        android:id="@+id/no_of_tickets"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/round_border"
         android:ems="10"
-        android:hint="Train No./Bus Id / Metro-Id"
-        android:inputType="text"
+        android:hint="No. Of Tickets"
+        android:inputType="number"
         android:padding="16dp"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,8 +114,8 @@
 
     <EditText
         android:id="@+id/date_pick"
-        android:layout_width="346dp"
-        android:layout_height="56dp"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/round_border"
         android:ems="10"
@@ -127,8 +123,23 @@
         android:inputType="text"
         android:padding="16dp"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/train_no" />
+        app:layout_constraintTop_toBottomOf="@+id/no_of_tickets" />
+
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/searchablespinner"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        app:hintText="Enter Train/Bus/Metro number"
+        android:background="@drawable/round_border"
+        app:layout_constraintBottom_toTopOf="@+id/booktickrt_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_pick"
+        app:layout_constraintVertical_bias="0.43" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

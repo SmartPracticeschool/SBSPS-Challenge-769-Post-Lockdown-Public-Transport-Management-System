@@ -35,8 +35,7 @@ public class User_Profile extends AppCompatActivity {
         fbase = FirebaseFirestore.getInstance();
         fauth = FirebaseAuth.getInstance();
         UserId = fauth.getCurrentUser().getUid();
-        iduser.setText("USER-ID = "+UserId);
-        nameuser.setText("USER-ID = "+UserId);
+        iduser.setText(UserId);
         btn_dashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +50,6 @@ public class User_Profile extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 UserName = (String)documentSnapshot.get("firstname");
                 nameuser.setText(UserName);
-
             }
         });
 
