@@ -109,7 +109,7 @@ public class user_activity extends AppCompatActivity implements View.OnClickList
                    loading.setVisibility(View.GONE);
                    Toast.makeText(getApplicationContext(),"User Registed Succesfully!",Toast.LENGTH_SHORT).show();
                    userid = mAuth.getCurrentUser().getUid();
-                   DocumentReference documentReference = fbase.collection("users").document();
+                   DocumentReference documentReference = fbase.collection("users").document(userid);
                    Map<String,Object> usermap = new HashMap<>();
                    usermap.put("firstname",name_input);
                    documentReference.set(usermap).addOnCompleteListener(new OnCompleteListener<Void>() {
