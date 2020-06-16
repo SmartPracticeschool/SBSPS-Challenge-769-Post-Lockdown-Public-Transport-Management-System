@@ -17,7 +17,7 @@
         <item name="colorAccent">@color/colorAccent</item>
 
     </style>
-    <string name="app_name"> Spinner</string>
+    <string name="app_name"> E-Transpo</string>
     <string-array name="spinner_items">
         <item>Select your transport</item>
         <item>Metro</item>

@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ticket_finalisation">
 
+    <TextView
+        android:id="@+id/finalticket_userid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:padding="10dp"
+        android:text="User Id"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toTopOf="@+id/bcode_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transpo_name"
+        app:layout_constraintVertical_bias="0.149" />
+
     <View
         android:id="@+id/view2"
         android:layout_width="419dp"
@@ -29,38 +46,77 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view2"
-        app:layout_constraintVertical_bias="0.342" />
+        app:layout_constraintVertical_bias="0.578" />
 
     <TextView
         android:id="@+id/transpo_name"
-        android:layout_width="365dp"
-        android:layout_height="94dp"
+        android:layout_width="335dp"
+        android:layout_height="116dp"
         android:fontFamily="@font/roboto_condensed_bold"
         android:padding="12dp"
         android:text="Transport name here"
-        android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="33sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view2"
-        app:layout_constraintVertical_bias="0.142"
-        android:gravity="center_horizontal" />
+        app:layout_constraintVertical_bias="0.142" />
 
     <Button
         android:id="@+id/pay_btn"
         android:layout_width="130dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="132dp"
         android:background="@drawable/round_bt"
         android:fontFamily="@font/roboto_condensed_bold"
         android:text="Pay"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cost"
+        app:layout_constraintVertical_bias="0.312" />
+
+    <TextView
+        android:id="@+id/date_finalticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:text="Date"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toTopOf="@+id/bcode_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transpo_name"
+        app:layout_constraintVertical_bias="0.651" />
+
+    <TextView
+        android:id="@+id/cost"
+        android:layout_width="336dp"
+        android:layout_height="56dp"
+        android:background="@drawable/round_border"
+        android:fontFamily="@font/roboto_black"
+        android:padding="10dp"
+        android:text="cost"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bcode_img"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.4" />
+
+    <ProgressBar
+        android:id="@+id/loader"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
