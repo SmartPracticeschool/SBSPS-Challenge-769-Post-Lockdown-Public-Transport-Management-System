@@ -7,6 +7,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import java.util.ArrayList;
@@ -31,6 +33,8 @@ public class ticket_booking extends AppCompatActivity implements View.OnClickLis
     Button book_ticket;
     String spinner_seleection;
     String Transportid,modeid;
+    String userid;
+    private FirebaseAuth mAuth;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,8 @@ public class ticket_booking extends AppCompatActivity implements View.OnClickLis
         no_of_ticket = (EditText) findViewById(R.id.no_of_tickets);
         book_ticket = (Button) findViewById(R.id.booktickrt_btn);
         book_ticket.setOnClickListener(this);
+        mAuth = FirebaseAuth.getInstance();
+        userid = mAuth.getCurrentUser().getUid();
         searchablespinner = (Spinner) findViewById(R.id.searchablespinner);
         List<String> searchablespinner_list = new ArrayList<String>();
         searchablespinner_list.add("Select Train/Bus/Metro Number");
@@ -105,7 +111,19 @@ public class ticket_booking extends AppCompatActivity implements View.OnClickLis
             no_of_ticket.requestFocus();
             return;
         }
+
         Toast.makeText(getApplicationContext(),date_string +" "+ from_string+ " " + to_string+ " " + tickets_string+ " " + Transportid + " " +modeid ,Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(ticket_booking.this,ticket_finalisation.class);
+        i.putExtra("passed_date",date_string);
+        i.putExtra("passed_from",from_string);
+        i.putExtra("passed_to",to_string);
+        i.putExtra("passed_ticket",tickets_string);
+        i.putExtra("passed_transpoid",Transportid);
+        i.putExtra("passed_modeid",modeid);
+        i.putExtra("passed_userid",userid);
+        startActivity(i);
+
+
     }
     @Override
     public void onClick(View v) {

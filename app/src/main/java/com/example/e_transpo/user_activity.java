@@ -89,7 +89,7 @@ public class user_activity extends AppCompatActivity implements View.OnClickList
             return;
         }
         if (password_input.length()<6){
-            password.setError("Minimun length of password is 6 letter");
+          password.setError("Minimun length of password is 6 letter");
             password.requestFocus();
             return;
         }
