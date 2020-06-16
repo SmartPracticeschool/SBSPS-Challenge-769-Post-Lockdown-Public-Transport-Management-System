@@ -4,22 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3f3f44"
+    android:background="@drawable/ic_wave"
     tools:context=".Dashboard">
-
-
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#3f3f44">
+        android:background="#ffffff">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="175dp"
             android:layout_marginTop="20dp"
+            android:background="@drawable/round_border"
             android:orientation="horizontal"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,9 +35,9 @@
 
                 <RelativeLayout
                     android:id="@+id/my_tickets_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#F6E75E">
+                    android:layout_width="162dp"
+                    android:layout_height="140dp"
+                    android:background="#FFFFFF">
 
 
                     <TextView
@@ -59,6 +58,7 @@
                         android:layout_height="75dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
+                        android:background="@drawable/round_bt"
                         app:srcCompat="@drawable/ic_ticket"
                         tools:ignore="VectorDrawableCompat" />
                 </RelativeLayout>
@@ -73,9 +73,9 @@
 
                 <RelativeLayout
                     android:id="@+id/book_tickets_card"
-                    android:layout_width="match_parent"
+                    android:layout_width="157dp"
                     android:layout_height="match_parent"
-                    android:background="#FFF6E75E">
+                    android:background="#FFFFFf">
 
                     <TextView
                         android:id="@+id/textView4"
@@ -98,6 +98,7 @@
                         android:layout_height="75dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
+                        android:background="@drawable/round_bt"
                         app:srcCompat="@drawable/ic_book_ticket"
                         tools:ignore="VectorDrawableCompat" />
 
@@ -128,7 +129,7 @@
                     android:id="@+id/search_card"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#FFF6E75E">
+                    android:background="@drawable/round_border">
 
                     <TextView
                         android:id="@+id/textView6"
@@ -148,6 +149,7 @@
                         android:layout_height="75dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
+                        android:background="@drawable/round_bt"
                         app:srcCompat="@drawable/ic_search"
                         tools:ignore="VectorDrawableCompat" />
                 </RelativeLayout>
@@ -176,7 +178,7 @@
                     android:id="@+id/health_card"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#FFF6E75E">
+                    android:background="@drawable/round_border">
 
                     <TextView
                         android:id="@+id/textView8"
@@ -196,6 +198,7 @@
                         android:layout_height="75dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
+                        android:background="@drawable/round_bt"
                         app:srcCompat="@drawable/ic_helth"
                         tools:ignore="VectorDrawableCompat" />
                 </RelativeLayout>
@@ -205,12 +208,14 @@
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="162dp"
-            android:layout_height="57dp"
+            android:layout_width="188dp"
+            android:layout_height="54dp"
             android:layout_marginTop="60dp"
+            android:background="@drawable/round_border"
             android:fontFamily="@font/roboto_condensed_bold"
+            android:paddingLeft="16sp"
             android:text="e-Transpo "
-            android:textColor="#FFF6E75E"
+            android:textColor="@color/colorPrimary"
             android:textSize="38sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -221,9 +226,10 @@
             android:id="@+id/das_signout"
             android:layout_width="116dp"
             android:layout_height="31dp"
-            android:background="@drawable/round_bt"
+            android:background="@drawable/round_border"
             android:fontFamily="@font/roboto_condensed_bold"
             android:text="SIGN OUT"
+            android:textColor="@color/colorPrimary"
             android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -236,9 +242,10 @@
             android:id="@+id/das_userProfile"
             android:layout_width="116dp"
             android:layout_height="31dp"
-            android:background="@drawable/round_bt"
+            android:background="@drawable/round_border"
             android:fontFamily="@font/roboto_condensed_bold"
             android:text="User Profile"
+            android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/textView5"
             app:layout_constraintEnd_toStartOf="@+id/das_signout"
