@@ -18,7 +18,6 @@
             android:layout_width="0dp"
             android:layout_height="175dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/round_border"
             android:orientation="horizontal"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,55 +26,17 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/my_tickets"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1">
-
-                <RelativeLayout
-                    android:id="@+id/my_tickets_card"
-                    android:layout_width="162dp"
-                    android:layout_height="140dp"
-                    android:background="#FFFFFF">
-
-
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/bus"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp"
-                        android:text="My Tickets"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:fontFamily="@font/fredoka_one" />
-
-                    <ImageView
-                        android:id="@+id/bus"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/round_bt"
-                        app:srcCompat="@drawable/ic_ticket"
-                        tools:ignore="VectorDrawableCompat" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
                 android:id="@+id/book_tickets"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="317dp"
+                android:layout_height="136dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1">
 
                 <RelativeLayout
                     android:id="@+id/book_tickets_card"
-                    android:layout_width="157dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#FFFFFf">
+                    android:background="@drawable/round_border">
 
                     <TextView
                         android:id="@+id/textView4"
@@ -84,9 +45,9 @@
                         android:layout_below="@id/imageView3"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="24dp"
-                        android:layout_marginRight="24dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="123dp"
+                        android:layout_marginRight="123dp"
                         android:text="Book Tickets"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -114,7 +75,7 @@
             android:orientation="horizontal"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
