@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.function.Consumer;
 
 public class Dashboard extends AppCompatActivity {
-    private CardView search, health, book_ticket, my_tickets;
+    private CardView search, health, book_ticket;
     private FirebaseAuth mAuth;
     private Button signout,profile_btn;
 
@@ -33,7 +33,6 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         search = (CardView) findViewById(R.id.search);
         health = (CardView) findViewById(R.id.health);
-        my_tickets = (CardView) findViewById(R.id.my_tickets);
         book_ticket = (CardView) findViewById(R.id.book_tickets);
         signout =(Button)findViewById(R.id.das_signout);
         profile_btn = (Button)findViewById(R.id.das_userProfile);
@@ -78,19 +77,6 @@ public class Dashboard extends AppCompatActivity {
                     @Override
                     public void run() {
                         Intent i = new Intent(Dashboard.this, healthplus.class);
-                        startActivity(i);
-
-                    }
-                }, 300);
-            }
-        });
-        my_tickets.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent i = new Intent(Dashboard.this, my_tickets.class);
                         startActivity(i);
 
                     }
