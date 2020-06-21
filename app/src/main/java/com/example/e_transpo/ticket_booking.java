@@ -143,8 +143,6 @@ public class ticket_booking extends AppCompatActivity implements View.OnClickLis
                 no_of_ticket.requestFocus();
                 return;
             }
-
-            Toast.makeText(getApplicationContext(), date_string + " " + from_string + " " + to_string + " " + tickets_string + " " + Transportid + " " + modeid, Toast.LENGTH_SHORT).show();
             Intent i = new Intent(ticket_booking.this, ticket_finalisation.class);
             i.putExtra("passed_date", date_string);
             i.putExtra("passed_from", from_string);
@@ -154,8 +152,6 @@ public class ticket_booking extends AppCompatActivity implements View.OnClickLis
             i.putExtra("passed_modeid", modeid);
             i.putExtra("passed_userid", userid);
             startActivity(i);
-
-
         }
 
     @Override
