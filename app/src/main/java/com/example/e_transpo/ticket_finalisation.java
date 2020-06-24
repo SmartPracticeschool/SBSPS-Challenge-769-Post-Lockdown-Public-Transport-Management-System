@@ -127,7 +127,10 @@ public class ticket_finalisation extends AppCompatActivity implements View.OnCli
 
                 DocumentReference documentReference = fbase.collection("Govt_Ticket_detais").document();
                 Map<String,Object> usermap = new HashMap<>();
-                usermap.put(USER_id,mainticketid);
+                usermap.put("Ticket-Id",mainticketid);
+                usermap.put("User-Id",USER_id);
+                usermap.put("Mode-Id",_mode_id);
+                usermap.put("Transpo-Id",_transpo_id);
                 documentReference.set(usermap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admins_modific">
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="419dp"
+        android:layout_height="79dp"
+        android:background="@drawable/ic_323"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/updation_heading"
+        android:layout_width="365dp"
+        android:layout_height="94dp"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:padding="12dp"
+        android:text="Update Information"
+        android:textColor="#000000"
+        android:textSize="33sp"
+        app:layout_constraintBottom_toTopOf="@+id/mode_of_transpo_admins"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/mode_of_transpo_admins"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="124dp"
+        android:background="@drawable/round_border"
+        app:hintText="Enter Mode Of Transport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/searchablespinner_admin"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/round_border"
+        app:hintText="Enter Train/Bus/Metro number"
+        app:layout_constraintTop_toBottomOf="@+id/mode_of_transpo_admins"
+        tools:layout_editor_absoluteX="46dp"
+        tools:ignore="MissingConstraints" />
+
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/searchablespinner_what_admin"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/round_border"
+        app:hintText="Select what to Update "
+        app:layout_constraintTop_toBottomOf="@+id/searchablespinner_admin"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="46dp" />
+
+    <EditText
+        android:id="@+id/editText_mainupdte"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchablespinner_what_admin" />
+
+    <Button
+        android:id="@+id/updataion_btn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_bt"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:text="Book Ticket"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_mainupdte"
+        app:layout_constraintVertical_bias="0.29" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

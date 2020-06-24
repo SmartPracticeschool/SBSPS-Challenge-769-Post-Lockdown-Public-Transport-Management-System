@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class healthplus extends AppCompatActivity implements View.OnClickListene
  String selected_health_issue;
  Button send_btn;
  FirebaseFirestore fbase;
+    private ProgressBar loading;
  FirebaseAuth mauth;
  TextView name,id;
     @Override
@@ -38,6 +40,7 @@ public class healthplus extends AppCompatActivity implements View.OnClickListene
         healthplus_spinner = (Spinner) findViewById(R.id.spinner_health);
         name = (TextView)findViewById(R.id.editTextTextPersonName5);
         id = (TextView)findViewById(R.id.editTextTextPersonName6);
+        loading = (ProgressBar)findViewById(R.id.loader);
         send_btn=(Button)findViewById(R.id.button3);
         mauth = FirebaseAuth.getInstance();
         fbase = FirebaseFirestore.getInstance();
@@ -66,6 +69,7 @@ public class healthplus extends AppCompatActivity implements View.OnClickListene
     }
 
     private void sumbit_details() {
+        loading.setVisibility(View.VISIBLE);
         String name_input = name.getText().toString();
         String id_input = id.getText().toString();
         String current_user = mauth.getCurrentUser().getUid();
@@ -84,13 +88,15 @@ public class healthplus extends AppCompatActivity implements View.OnClickListene
         }
         DocumentReference documentReference = fbase.collection("Health Plus Messages").document();
         Map<String,Object> usermap = new HashMap<>();
-        usermap.put("Name of Patient",name_input);
-        usermap.put("User ID of Patient",id_input);
-        usermap.put("User ID of user ",current_user);
+        usermap.put("Name_of_Patient",name_input);
+        usermap.put("User_ID_of_Patient",id_input);
+        usermap.put("User_ID_of_user",current_user);
+        usermap.put("Heath_Issue",selected_health_issue);
 
         documentReference.set(usermap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                loading.setVisibility(View.GONE);
                 Intent i = new Intent(healthplus.this,Dashboard.class);
                 startActivity(i);
                 finish();

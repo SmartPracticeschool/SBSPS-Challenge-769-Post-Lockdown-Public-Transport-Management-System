@@ -20,6 +20,18 @@
         app:srcCompat="@drawable/ic_round_healing_24"
         tools:ignore="VectorDrawableCompat" />
 
+    <ProgressBar
+        android:id="@+id/loader"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view3" />
+
     <TextView
         android:id="@+id/book_ticket_heading"
         android:layout_width="265dp"

@@ -16,7 +16,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-public class User_Profile extends AppCompatActivity {
+public class admin_profile extends AppCompatActivity {
     private TextView iduser,nameuser;
     private Button btn_dashboard;
     FirebaseFirestore fbase;
@@ -27,7 +27,7 @@ public class User_Profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user__profile);
+        setContentView(R.layout.admin_profile);
         iduser = (TextView)findViewById(R.id.userid_healthissue);
         btn_dashboard = (Button) findViewById(R.id.profile_dashboard_btn);
         nameuser = (TextView)findViewById(R.id.username_title);
@@ -38,12 +38,11 @@ public class User_Profile extends AppCompatActivity {
         btn_dashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(User_Profile.this,Dashboard.class);
+                Intent i = new Intent(admin_profile.this,administrationphasedashboard.class);
                 startActivity(i);
             }
         });
-
-        DocumentReference documentReference = fbase.collection("users").document(UserId);
+        DocumentReference documentReference = fbase.collection("Admins").document(UserId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {

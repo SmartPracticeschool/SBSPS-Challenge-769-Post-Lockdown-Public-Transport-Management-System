@@ -96,7 +96,6 @@ public class ticket_booking extends AppCompatActivity implements View.OnClickLis
                     modeid = smode;
                     searchablespinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, searchablespinner_list_Metro));
                 }
-
             }
 
             @Override
