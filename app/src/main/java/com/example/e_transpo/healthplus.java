@@ -69,7 +69,7 @@ public class healthplus extends AppCompatActivity implements View.OnClickListene
     }
 
     private void sumbit_details() {
-        loading.setVisibility(View.VISIBLE);
+
         String name_input = name.getText().toString();
         String id_input = id.getText().toString();
         String current_user = mauth.getCurrentUser().getUid();
@@ -86,6 +86,7 @@ public class healthplus extends AppCompatActivity implements View.OnClickListene
         if(selected_health_issue.contentEquals("Choose problem observed in patient")){
             Toast.makeText(getApplicationContext(),"Please select health issue",Toast.LENGTH_SHORT).show();
         }
+        loading.setVisibility(View.VISIBLE);
         DocumentReference documentReference = fbase.collection("Health Plus Messages").document();
         Map<String,Object> usermap = new HashMap<>();
         usermap.put("Name_of_Patient",name_input);

@@ -52,8 +52,9 @@
         android:layout_marginTop="28dp"
         android:background="@drawable/round_border"
         app:hintText="Enter Train/Bus/Metro number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mode_of_transpo_admins"
-        tools:layout_editor_absoluteX="46dp"
         tools:ignore="MissingConstraints" />
 
     <com.toptoche.searchablespinnerlibrary.SearchableSpinner
@@ -63,9 +64,10 @@
         android:layout_marginTop="28dp"
         android:background="@drawable/round_border"
         app:hintText="Select what to Update "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchablespinner_admin"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="46dp" />
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editText_mainupdte"
@@ -76,6 +78,7 @@
         android:ems="10"
         android:inputType="text"
         android:padding="16dp"
+        android:hint="update here"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +92,7 @@
         android:layout_height="50dp"
         android:background="@drawable/round_bt"
         android:fontFamily="@font/roboto_condensed_bold"
-        android:text="Book Ticket"
+        android:text="UPDATE"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

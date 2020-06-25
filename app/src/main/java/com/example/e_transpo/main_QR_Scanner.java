@@ -82,7 +82,7 @@ public class main_QR_Scanner extends AppCompatActivity implements ZXingScannerVi
                         verfi_ticket.scan_userid.setText("User-Id: "+Ticket_details.get(1));
                         verfi_ticket.scan_modeid.setText("Mode: "+Ticket_details.get(2));
                         verfi_ticket.scan_transpoid.setText("Transpo-Id: "+Ticket_details.get(3));
-                        verfi_ticket.scan_result.setTextColor(rgb(0,255,0));
+                        verfi_ticket.scan_result.setTextColor(	rgb(50,205,50));
                         verfi_ticket.scan_result.setText("USER VERIFIED SUCESSFULLY");
                         }
                 }

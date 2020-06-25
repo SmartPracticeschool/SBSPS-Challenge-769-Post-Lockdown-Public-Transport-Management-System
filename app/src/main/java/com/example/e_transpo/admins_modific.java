@@ -2,6 +2,7 @@ package com.example.e_transpo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,8 @@ public class admins_modific extends AppCompatActivity {
         searchablespinner_admin = (Spinner)findViewById(R.id.searchablespinner_admin);
         searchablespinner_what_admin = (Spinner)findViewById(R.id.searchablespinner_what_admin);
         mainupdate= (EditText)findViewById(R.id.editText_mainupdte);
+        updation_btn = (Button)findViewById(R.id.updataion_btn);
+
 
         final List<String> searchablespinner_list_train = new ArrayList<String>();
         searchablespinner_list_train.add("Select Train/Bus/Metro Number");
@@ -50,9 +54,10 @@ public class admins_modific extends AppCompatActivity {
         searchablespinner_list_Metro.add("Metro ID 50005");
 
         final List<String> searchablespinner_whatupdate = new ArrayList<String>();
-        searchablespinner_list_Metro.add("Update No. of Stops");
-        searchablespinner_list_Metro.add("Update Route Info");
-        searchablespinner_list_Metro.add("Update Fare details");
+        searchablespinner_whatupdate.add("Select what to update");
+        searchablespinner_whatupdate.add("Update No. of Stops");
+        searchablespinner_whatupdate.add("Update Route Info");
+        searchablespinner_whatupdate.add("Update Fare details");
 
         List<String> searchablespinnermode_list = new ArrayList<String>();
         searchablespinnermode_list.add("Select Mode Of Transport");
@@ -128,5 +133,9 @@ public class admins_modific extends AppCompatActivity {
             mainupdate.requestFocus();
             return;
         }
+        Toast.makeText(getApplicationContext(),"Updated Successfully !!",Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(admins_modific.this,administrationphasedashboard.class);
+        finish();
+        startActivity(i);
     }
 }

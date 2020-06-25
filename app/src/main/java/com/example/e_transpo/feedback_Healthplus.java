@@ -51,10 +51,10 @@ public class feedback_Healthplus extends AppCompatActivity {
                      myviewholder.list_patientname.setText("No Patients Sumbitted !!");
                  }
                  else{
-                     myviewholder.list_patientname.setText("Name Of Patient: "+modalclass.getName_of_Patient());
-                     myviewholder.list_healthissue.setText("Health Issue: "+modalclass.getHeath_Issue());
-                     myviewholder.list_patientid.setText("Patient-Id(app user id)z; "+modalclass.getUser_ID_of_Patient());
-                     myviewholder.list_userid.setText("User-Id: "+modalclass.getUser_ID_of_user());
+                     myviewholder.list_patientname.setText("Name Of Patient:  "+modalclass.getName_of_Patient());
+                     myviewholder.list_healthissue.setText("Health Issue:  "+modalclass.getHeath_Issue());
+                     myviewholder.list_patientid.setText("Patient-Id(app user id):  "+modalclass.getUser_ID_of_Patient());
+                     myviewholder.list_userid.setText("User-Id:  "+modalclass.getUser_ID_of_user());
                  }
 
 

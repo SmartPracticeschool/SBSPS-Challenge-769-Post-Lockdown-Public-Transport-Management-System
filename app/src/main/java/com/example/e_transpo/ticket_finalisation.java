@@ -179,7 +179,7 @@ public class ticket_finalisation extends AppCompatActivity implements View.OnCli
         paintHead.setUnderlineText(true);
         Bitmap scaledbitmap = btm.createScaledBitmap(btm,180,180,false);
 
-        PdfDocument.PageInfo mypageinfo1 = new PdfDocument.PageInfo.Builder(250,400,1).create();
+        PdfDocument.PageInfo mypageinfo1 = new PdfDocument.PageInfo.Builder(320,410,1).create();
         PdfDocument.Page mypage = mypdfDocument.startPage(mypageinfo1);
         Canvas canvas = mypage.getCanvas();
         canvas.drawBitmap(scaledbitmap,40,50,paintHead);

@@ -23,6 +23,7 @@ public class administrationphasedashboard extends AppCompatActivity {
         signout =(Button)findViewById(R.id.das_signout);
         profile_btn = (Button)findViewById(R.id.das_userProfile);
         health_feedbac = (TextView)findViewById(R.id.healthplus_fedback);
+        updatio = (TextView)findViewById(R.id.updation_admin);
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +32,15 @@ public class administrationphasedashboard extends AppCompatActivity {
                 finish();
                 Intent m = new Intent(administrationphasedashboard.this, Administrationphase.class);
                 startActivity(m);
+
+            }
+        });
+        updatio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent m = new Intent(administrationphasedashboard.this, admins_modific.class);
+                startActivity(m);
+
             }
         });
         profile_btn.setOnClickListener(new View.OnClickListener() {
