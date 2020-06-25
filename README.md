@@ -5,8 +5,8 @@ This is an android application for specifically Post-Lockdown Period . This app 
 This app is for IBM Hack Challenge 2020
 
 # Team Member Roles
- Frontend Developmnet - Chakshu , Mehak
- Backend Development - Naveen
+Frontend Developmnet - Chakshu , Mehak
+Backend Development - Naveen
 
 # Dependencies
     implementation 'com.google.android.material:material:1.1.0'
