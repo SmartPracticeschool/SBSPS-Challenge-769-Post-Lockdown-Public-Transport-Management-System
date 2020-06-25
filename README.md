@@ -6,6 +6,7 @@ This app is for IBM Hack Challenge 2020
 
 # Team Member Roles
 Frontend Developmnet - Chakshu , Mehak
+
 Backend Development - Naveen
 
 # Dependencies
