@@ -1,8 +1,10 @@
 package com.example.e_transpo;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -17,6 +19,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,10 +29,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -38,7 +45,6 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
@@ -56,8 +62,14 @@ public class ticket_finalisation extends AppCompatActivity implements View.OnCli
     FirebaseFirestore fbase;
     String USER_id,mainticketid;
     Bitmap btm;
-    String _transpo_id,_mode_id,_to,_from,_date;
-
+    String _transpo_id,_mode_id,_to,_from,_date,_no_ticket_string;
+    Integer _ticket_number;
+    Integer ticket_avail_bus = 30;
+    Integer ticket_avail_metro = 1020;
+    Integer ticket_avail_train = 1224;
+    Long database_ticket ;
+    Integer update_value;
+    String update_value_string;
 
 
     @Override
@@ -75,8 +87,74 @@ public class ticket_finalisation extends AppCompatActivity implements View.OnCli
         mauth = FirebaseAuth.getInstance();
         fbase = FirebaseFirestore.getInstance();
         ticket_generate();
-
     }
+
+    private void ticket_check() {
+        DocumentReference documentReference = fbase.collection("ticket_counter").document(_transpo_id);
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+
+                        Log.d("nnn", "DocumentSnapshot data: " + document.getData());
+                        Long my_data = (Long) document.getLong("tickets");
+                        if(_mode_id.contentEquals("Metro")) {
+                            assert my_data != null;
+                            if (ticket_avail_metro-my_data<=0){
+                        Toast.makeText(getApplicationContext(),"Sorry , Ticket are not available !",Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent i = new Intent(ticket_finalisation.this, ticket_booking.class);
+                                startActivity(i);
+                                finish();
+                            }
+                        }, 2000);
+                        return;
+                    }
+                }
+                if(_mode_id.contentEquals("Bus")) {
+                    assert my_data != null;
+                    if (ticket_avail_bus-my_data<=0){
+                        Toast.makeText(getApplicationContext(),"Sorry , Ticket are not available !",Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent i = new Intent(ticket_finalisation.this, ticket_booking.class);
+                                startActivity(i);
+                                finish();
+                            }
+                        }, 2000);
+                        return;
+                    }
+                }
+                if(_mode_id.contentEquals("Train")) {
+                    assert my_data != null;
+                    if (ticket_avail_train-my_data<=0){
+                        Toast.makeText(getApplicationContext(),"Sorry , Ticket are not available !",Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent i = new Intent(ticket_finalisation.this, ticket_booking.class);
+                                startActivity(i);
+                                finish();
+                            }
+                        }, 2000);
+                            return;
+                    }
+                }
+
+                    } else {
+                        Log.d("nnn", "No such document");
+                    }
+                } else {
+                    Log.d("nnn", "get failed with ", task.getException());
+                }
+            }
+        });
+ }
 
     private void ticket_generate() {
         Calendar calendar = Calendar.getInstance();
@@ -87,6 +165,8 @@ public class ticket_finalisation extends AppCompatActivity implements View.OnCli
          _to = getIntent().getStringExtra("passed_to");
         _from = getIntent().getStringExtra("passed_from");
         _date = getIntent().getStringExtra("passed_date");
+        _ticket_number = Integer.parseInt(String.valueOf(_no_ticket));
+        ticket_check();
         transpo_name.setText("Passenger Ticket For" + _transpo_id);
         date_textview.setText("Date :   "+_date);
         userid_textview.setText("User Id :  "+_user_id);
@@ -103,7 +183,6 @@ public class ticket_finalisation extends AppCompatActivity implements View.OnCli
             Cost_value =  _no_ticket  * cost_train;
             cost_textview.setText("Total cost = "+Cost_value+"Rs,"+cost_train+"Rs. per head");
         }
-
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
             BitMatrix bitMatrix = multiFormatWriter.encode(mainticketid, BarcodeFormat.QR_CODE,350,350);
@@ -122,6 +201,7 @@ public class ticket_finalisation extends AppCompatActivity implements View.OnCli
         switch (v.getId()){
             case R.id.pay_btn:
                 loading.setVisibility(View.VISIBLE);
+
                 FirebaseUser user = mauth.getCurrentUser();
                 USER_id = mauth.getCurrentUser().getUid();
 
@@ -149,6 +229,7 @@ public class ticket_finalisation extends AppCompatActivity implements View.OnCli
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         createpdfdoc();
+                        updatecounter();
                         loading.setVisibility(View.GONE);
                         Toast.makeText(getApplicationContext(),"Ticket has been saved in your device , check now !",Toast.LENGTH_SHORT).show();
                         new Handler().postDelayed(new Runnable() {
@@ -162,6 +243,43 @@ public class ticket_finalisation extends AppCompatActivity implements View.OnCli
                     }
                 });
         }
+    }
+
+    private void updatecounter() {
+        DocumentReference documentReferenceupdater = fbase.collection("ticket_counter").document(_transpo_id);
+        documentReferenceupdater.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d("uuu", "DocumentSnapshot data: " + document.getData());
+                        Long my_data = (Long) document.getLong("tickets");
+                        assert my_data != null;
+                        Long z = my_data+_ticket_number;
+                        Log.d("uuu", "Total tickets :::"+z+ document.getData());
+                        DocumentReference documentReference = fbase.collection("ticket_counter").document(_transpo_id);
+                        Map<String,Object> usermap = new HashMap<>();
+                        usermap.put("tickets",z);
+                        documentReference.set(usermap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(getApplicationContext(),"Counter Updated Successfully !!",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+                    } else {
+                        Log.d("uuu", "No such document");
+                    }
+                } else {
+                    Log.d("uuu", "get failed with ", task.getException());
+                }
+            }
+        });
+
+
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

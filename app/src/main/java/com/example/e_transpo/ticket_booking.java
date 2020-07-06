@@ -138,10 +138,16 @@ public class ticket_booking extends AppCompatActivity implements View.OnClickLis
                 return;
             }
             if (tickets_string.isEmpty()) {
-                no_of_ticket.setError("Field mendatory");
+                no_of_ticket.setError("Please select no. of tickets !!");
                 no_of_ticket.requestFocus();
                 return;
             }
+            if ((Integer.parseInt(tickets_string)>5)) {
+                no_of_ticket.setError("Max no. of tickets a user can book is 5!");
+                no_of_ticket.requestFocus();
+                return;
+            }
+
             Intent i = new Intent(ticket_booking.this, ticket_finalisation.class);
             i.putExtra("passed_date", date_string);
             i.putExtra("passed_from", from_string);
